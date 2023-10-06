@@ -1,8 +1,20 @@
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import app from './app.js';
 import logger from './configs/logger.config.js';
 
 dotenv.config({path: './config.env'});
+
+logger.info(process.env.DATABASE_URL);
+
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    // useFindAndModify: false,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("Connected to the database")
+})
 
 const port = process.env.PORT || 5500;
 
@@ -17,7 +29,7 @@ const exitHandler = () => {
     process.exit(1)
 }
 
-const unexpectedErrorHandler = () => {
+const unexpectedErrorHandler = (error) => {
     logger.error(error);
     exitHandler();
 }

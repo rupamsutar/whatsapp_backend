@@ -7,6 +7,8 @@ import compression from 'compression';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import createHttpError from 'http-errors';
+import routes from "./routes/index.js";
+
 const app = express();
 
 //Morgan
@@ -41,9 +43,8 @@ app.use(cors({
     origin: "http://localhost:3000"
 }))
 
-app.get('/', (req, res) => {
-    res.send(req.body);
-});
+// API version 1 Routes
+app.use('/api/v1', routes);
 
 app.use(async(req,res,next) => {
     next(createHttpError.NotFound("This route does not exist"));
