@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema({
     name: {
@@ -26,13 +27,28 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please provide your password'],
         minLength: [6, 'Please make sure your password is atleast 6 characters long'],
-        maxLength: [6, 'Please make sure your password is lessthan 128 characters']
+        maxLength: [128, 'Please make sure your password is less than 128 characters']
     }
 
 }, {
     collection: "wausers",
     timestamps: true
 });
+
+userSchema.pre('save', async function(next) {
+    try {
+        if (this.isNew) {
+            const salt =await bcrypt.genSalt(12);
+            const hashedPassword = await bcrypt.hash(this.password, salt);
+
+            this.password = hashedPassword;
+        }
+
+        next();
+    } catch (error) {
+        next(error);
+    }
+})
 
 const UserModel = mongoose.models.UserModel || mongoose.model("UserModel", userSchema);
 

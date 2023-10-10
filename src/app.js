@@ -40,7 +40,7 @@ app.use(fileUpload({
 
 // cors
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "*"
 }))
 
 // API version 1 Routes
@@ -56,7 +56,7 @@ app.use(async (err, req, res, next) => {
         error: {
             status: err.status || 500,
             message: err.message
-        }
+        },
     })
 });
 

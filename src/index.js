@@ -5,8 +5,6 @@ import logger from './configs/logger.config.js';
 
 dotenv.config({path: './config.env'});
 
-logger.info(process.env.DATABASE_URL);
-
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     // useCreateIndex: true,
