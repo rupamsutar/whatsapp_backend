@@ -35,13 +35,13 @@ export const register = async (req, res, next) => {
     });
     res.status(201).json({
       message: "Registration successfull",
-      access_token,
       user: {
         _id: newUser._id,
         name: newUser.name,
         email: newUser.email,
         picture: newUser.picture,
         status: newUser.status,
+        token: access_token
       },
     });
   } catch (error) {
@@ -71,19 +71,20 @@ export const login = async (req, res, next) => {
 
     res.status(201).json({
       message: "Login successfull",
-      access_token,
       user: {
         _id: user._id,
         name: user.name,
         email: user.email,
         picture: user.picture,
         status: user.status,
+        token: access_token
       },
     });
   } catch (error) {
     next(error);
   }
 };
+
 export const logout = async (req, res, next) => {
   try {
     res.clearCookie("refreshtoken", { path: "/api/v1/auth/refreshtoken" });
