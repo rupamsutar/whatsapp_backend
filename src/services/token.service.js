@@ -1,7 +1,7 @@
 import createHttpError from "http-errors";
 import bcrypt from "bcryptjs";
-import UserModel from "../models/userModal.js";
 import { sign, verify } from "../utils/token.util.js";
+import UserModel from "../models/userModal.js";
 
 export const generateToken = async (payload, expires, secret) => {
   let token = sign(payload, expires, secret);

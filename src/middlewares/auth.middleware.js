@@ -10,7 +10,8 @@ export default async function(req, res, next) {
         if(error) {
             logger.error(error)
         } else {
-            res.send(payload);
+            req.user = payload;
+            next();
         }
     });
 }
