@@ -14,7 +14,7 @@ const messageSchema = mongoose.Schema(
     },
     conversation: {
       type: ObjectId,
-      ref: "ConversationModel",
+      ref: "waconversations",
     },
     files: [],
   },
@@ -23,8 +23,6 @@ const messageSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
-console.log(mongoose.models);
 
 const MessageModel =
   mongoose.models.wamessages ||
