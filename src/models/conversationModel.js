@@ -31,13 +31,13 @@ const conversationSchema = mongoose.Schema({
     },
   },
   {
-    collections: "conversations",
+    collections: "waconversations",
     timestamps: true,
   }
 );
 
 const ConversationModel =
   mongoose.models.ConversationModel ||
-  mongoose.model("ConversationModel", conversationSchema);
+  mongoose.model("waconversations", conversationSchema);
 
 export default ConversationModel;

@@ -1,5 +1,6 @@
 import createHttpError from "http-errors";
 import jwt from "jsonwebtoken";
+import logger from "../configs/logger.config.js";
 
 export default async function(req, res, next) {
     if(!req.headers["authorization"])
