@@ -35,7 +35,7 @@ export const getMessages = async(req, res, next) => {
         }
 
         const messages = await getConvoMessages(convo_id);
-        res.json(messages);
+        res.json(messages); 
     } catch (error) {
         next(error)
     }

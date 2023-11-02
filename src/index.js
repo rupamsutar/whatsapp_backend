@@ -8,7 +8,7 @@ dotenv.config({path: './config.env'});
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     // useCreateIndex: true,
-    // useFindAndModify: false,
+    // useFindAndModify: false,                                           
     useUnifiedTopology: true
 }).then(() => {
     console.log("Connected to the database")

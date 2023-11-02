@@ -10,7 +10,7 @@ export const doesConversationExist = async (sender_id, receiver_id) => {
     ],
   })
     .populate("users", "-password")
-    .populate("latestMessage");
+    .populate("latestMessage"); 
 
   if (!convos)
     throw createHttpError.BadRequest("Oops...Something went wrong !");
@@ -65,6 +65,7 @@ export const getUserConversations = async (userId) => {
       });
       conversations = result;
     }).catch((err) => {
+      console.log(err);
       throw createHttpError.BadRequest("Oops.. Something went wrong");
     });
 
