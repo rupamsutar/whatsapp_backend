@@ -3,7 +3,7 @@ import { updateLatestMessage } from "../services/conversation.service.js";
 import { createMessage, getConvoMessages, populateMessage } from "../services/message.service.js";
 
 export const sendMessage = async(req, res, next) => {
-    try {
+    try {        
         const user_id = req.user.userId;
         const {message, convo_id, files} = req.body;
         if(!convo_id || (!message && !files)) {
