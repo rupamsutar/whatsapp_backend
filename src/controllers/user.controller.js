@@ -13,6 +13,6 @@ export const searchUsers = async(req, res, next) => {
         const users = await searchUsersService(keyword, req.user.userId);
         res.status(200).json(users);
     } catch (error) {
-        next(error);
+        next(error); 
     }
 }
