@@ -36,12 +36,12 @@ app.use(compression());
 // file fileUpload
 app.use(fileUpload({
     useTempFiles: true
-}))
+}));
 
 // cors
 app.use(cors({
     origin: "*"
-}))
+}));
 
 // API version 1 Routes
 app.use('/api/v1', routes);
