@@ -33,7 +33,7 @@ export const getConvoMessages = async(convo_id) => {
         'name picture email status'
     ).populate(
         'conversation'
-    )
+    );
 
     return messages
 }
