@@ -38,7 +38,7 @@ const exitHandler = () => {
     if (server) {
         logger.info('server is closing 🌟💣...');
     }
-    process.exit(1)
+    process.exit(1);
 }
 
 const unexpectedErrorHandler = (error) => {

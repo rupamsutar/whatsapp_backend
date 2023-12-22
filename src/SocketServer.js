@@ -23,12 +23,12 @@ export default function(socket, io) {
         onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
         console.log("users has just disconnected");
         io.emit('get-online-users', onlineUsers);
-    })
+    });
 
     socket.on("join conversation", (conversation) => {
         socket.join(conversation);
         console.log('user has joined a conversation :', conversation);
-    })
+    });
 
     // send and receive message
     socket.on('send message', (message) => {
@@ -40,5 +40,5 @@ export default function(socket, io) {
             console.log("Message on backend", user._id);
             socket.in(user._id).emit("receive message", message);
         });
-    })
+    });
 }
